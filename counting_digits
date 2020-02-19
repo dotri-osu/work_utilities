@@ -1,0 +1,28 @@
+## 2020WW8.3
+## Creates a dictionary of how many labels are required for each digit.
+
+start_num = int(input('starting number: '))
+end_num = int(input('end number: '))
+num_dict= {}
+
+def count_digits(start_num, end_num_):
+                 
+    for i in range(start_num, end_num + 1):
+        if i in range(0, 10):
+            if i not in num_dict.keys():
+                num_dict[str(i)] = 1
+        elif i >= 10:
+            for j in str(i):
+                if j in num_dict.keys():
+                    value = num_dict[j]
+                    value += 1
+                    num_dict[j] = value
+
+                    # For debug
+                    #print('j', j)
+                    #print('j value', value)
+                
+    for k, v in num_dict.items():
+        print(k,':', v)
+
+count_digits(start_num, end_num)
